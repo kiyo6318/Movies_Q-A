@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question,only: %i(show edit update destroy)
+  before_action :authenticate_user,only: %i(new create edit update destroy)
+  before_action :ensure_correct_user,only: %i(edit update destroy)
   def index
     @questions = Question.all
   end
@@ -10,6 +12,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.questioner_id = current_user.id
     if @question.save
       redirect_to question_path(@question.id),notice:"質問を投稿しました！"
     else
@@ -24,7 +27,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(question_path)
+    if @question.update(question_params)
       redirect_to question_path(@question.id),notice:"質問を更新しました！"
     else
       render "edit"
@@ -45,5 +48,11 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def ensure_correct_user
+    if @question.user != current_user
+      redirect_back(fallback_location: questions_path,notice:"権限がありません")
+    end
   end
 end

@@ -1,6 +1,6 @@
 <h1>ユーザー一覧</h1>
 <% @user.each do |user| %>
   <div>
-    <%= user.name %>
+    <%= link_to user.name,user_path(user) %>
   </div>
 <% end %>

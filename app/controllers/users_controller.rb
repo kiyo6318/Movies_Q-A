@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
+  before_action :authenticate_user, only: %i(edit update destroy)
+  before_action :ensure_correct_user, only: %i(edit update destroy)
   def index
     @user = User.all
   end
@@ -46,5 +48,11 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def ensure_correct_user
+    if @user != current_user
+      redirect_back(fallback_location: questions_path,notice:"権限がありません")
+    end
   end
 end
