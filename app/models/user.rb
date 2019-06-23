@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :questions,foreign_key:"questioner_id",dependent: :destroy
+
   before_validation { email.downcase! }
   has_secure_password
   validates :name,presence: true,length: {maximum: 30 }

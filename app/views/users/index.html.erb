@@ -1,6 +1,6 @@
 <h1>ユーザー一覧</h1>
-<div>
-  <% @user.each do |user| %>
+<% @user.each do |user| %>
+  <div>
     <%= user.name %>
-  <% end %>
-</div>
+  </div>
+<% end %>
