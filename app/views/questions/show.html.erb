@@ -1,0 +1,19 @@
+<h1>質問詳細</h1>
+<div>
+  <%= link_to @question.user.name,user_path(@question.user) %>
+</div>
+<div>
+  <%= @question.title %>
+  <span><%= @question.status %></span>
+</div>
+<div>
+  <%= @question.details %>
+</div>
+<div>
+  <%= @question.status_i18n %>
+</div>
+<% if @question.user == current_user %>
+  <div>
+    <%= link_to "質問編集",edit_question_path(@question) %>
+  </div>
+<% end %>

@@ -1,0 +1,6 @@
+<h1>質問一覧</h1>
+<% @questions.each do |question| %>
+  <div>
+    <%= link_to question.title,question_path(question) %>
+  </div>
+<% end %>
