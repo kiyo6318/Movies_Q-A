@@ -17,11 +17,12 @@
     <%= f.label :details %>
     <%= f.text_area :details %>
   </div>
-
-  <div>
-    <%= f.label :status %>
-    <%= f.select :status,Question.statuses.keys.map {|k| [Question.statuses_i18n[k],k]} %>
-  </div>
+  <% if @question.id.present? %>
+    <div>
+      <%= f.label :status %>
+      <%= f.select :status,Question.statuses.keys.map {|k| [Question.statuses_i18n[k],k]} %>
+    </div>
+  <% end %>
 
   <div>
     <%= f.submit %>
