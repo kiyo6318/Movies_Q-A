@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :questions,foreign_key: "questioner_id",dependent: :destroy
+  has_many :answers,foreign_key: "answerer_id",dependent: :destroy
 
   before_validation { email.downcase! }
   has_secure_password
