@@ -1,0 +1,33 @@
+<ul>
+  <% answers.each do |answer| %>
+    <% if answer.id.present? %>
+      <li>
+        <div>
+          <span>
+            <%= answer.user.name %>
+          </span>
+          <br>
+          <span>
+            <%= answer.content %>
+          </span>
+          <% if answer.best_answer%>
+            <span>
+              ベストアンサー
+            </span>
+          <% end %>
+          <% if current_user != nil && current_user == answer.user%>
+            <span>
+              <%= link_to "回答を削除",question_answer_path(question.id,answer.id),method: :delete,data: {
+                confirm: "本当に削除しますか？",remote: true } %>
+            </span>
+          <% end %>
+          <% if current_user == question.user && answer.best_answer == false && answer.user != question.user && question.answers.select {|answer| answer.best_answer == true}.empty?  %>
+            <span>
+              <%= link_to "ベストアンサーに選ぶ",question_answer_path(question.id,answer.id),method: :put,data: {confirm: "この回答をベストアンサーに決定しますか？"} %>
+            </span>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
