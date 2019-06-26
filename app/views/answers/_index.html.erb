@@ -4,6 +4,10 @@
       <li>
         <div>
           <span>
+            <%= answer.user.name %>
+          </span>
+          <br>
+          <span>
             <%= answer.content %>
           </span>
           <% if answer.best_answer%>
@@ -13,7 +17,7 @@
           <% end %>
           <% if current_user != nil && current_user == answer.user%>
             <span>
-              <%= link_to "destroy",question_answer_path(question.id,answer.id),method: :delete,data: {
+              <%= link_to "回答を削除",question_answer_path(question.id,answer.id),method: :delete,data: {
                 confirm: "本当に削除しますか？",remote: true } %>
             </span>
           <% end %>
