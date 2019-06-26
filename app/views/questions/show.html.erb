@@ -4,7 +4,6 @@
 </div>
 <div>
   <%= @question.title %>
-  <span><%= @question.status %></span>
 </div>
 <div>
   <%= @question.details %>
@@ -12,6 +11,13 @@
 <div>
   <%= @question.status_i18n %>
 </div>
+<div>回答一覧</div>
+<div id="answers_area">
+  <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
+</div>
+
+<%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
+
 <% if @question.user == current_user %>
   <div>
     <%= link_to "質問編集",edit_question_path(@question) %>
