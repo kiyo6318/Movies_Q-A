@@ -25,11 +25,8 @@
   <% end %>
 
   <div>
-    <% Label.all.each do |label| %>
-      <label>
-        <%= f.check_box :label_ids,{multiple: true,checked: label[:checked],disabled: label[:disabled],include_hidden: false},label[:id] %>
-        <%= label[:genre] %>
-      </label>
+    <%= f.collection_check_boxes(:label_ids,Label.all,:id,:genre) do |c|%>
+      <%= c.label { c.check_box + c.text } %>
     <% end %>
   </div>
 
