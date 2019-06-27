@@ -16,8 +16,14 @@
   <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
 </div>
 
-<%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
-
+<div>
+  <%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
+</div>
+<div>
+  <% @question.labels.each do |label| %>
+    <%= label.genre %>
+  <% end %>
+</div>
 <% if @question.user == current_user %>
   <div>
     <%= link_to "質問編集",edit_question_path(@question) %>

@@ -25,6 +25,12 @@
   <% end %>
 
   <div>
+    <%= f.collection_check_boxes(:label_ids,Label.all,:id,:genre) do |c|%>
+      <%= c.label { c.check_box + c.text } %>
+    <% end %>
+  </div>
+
+  <div>
     <%= f.submit %>
   </div>
 <% end %>
