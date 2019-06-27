@@ -45,7 +45,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:title,:details,:status)
+    params.require(:question).permit(:title,:details,:status,label_ids:[])
   end
 
   def set_question

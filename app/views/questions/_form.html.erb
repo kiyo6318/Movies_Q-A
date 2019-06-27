@@ -25,6 +25,15 @@
   <% end %>
 
   <div>
+    <% Label.all.each do |label| %>
+      <label>
+        <%= f.check_box :label_ids,{multiple: true,checked: label[:checked],disabled: label[:disabled],include_hidden: false},label[:id] %>
+        <%= label[:genre] %>
+      </label>
+    <% end %>
+  </div>
+
+  <div>
     <%= f.submit %>
   </div>
 <% end %>

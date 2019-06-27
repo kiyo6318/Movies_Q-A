@@ -2,5 +2,10 @@
 <% @questions.each do |question| %>
   <div>
     <%= link_to question.title,question_path(question) %>
+    <span>
+      <% question.labels.each do |label| %>
+        <%= label.genre %>
+      <% end %>
+    </span>
   </div>
 <% end %>
