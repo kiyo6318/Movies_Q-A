@@ -3,7 +3,11 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user,only: %i(new create edit update destroy)
   before_action :ensure_correct_user,only: %i(edit update destroy)
   def index
-    @questions = Question.all
+    # @questions = Question.all
+    @q = Question.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @statuses = Question.statuses
+    @questions = @q.result(distinct: true)
   end
 
   def new
