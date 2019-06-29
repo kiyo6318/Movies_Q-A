@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @q = Question.ransack(params[:q])
     @q.sorts = 'created_at desc' if @q.sorts.empty?
     @statuses = Question.statuses
-    @questions = @q.result(distinct: true)
+    @questions = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new
