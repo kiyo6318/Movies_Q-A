@@ -20,6 +20,8 @@ gem 'kaminari','~> 0.17.0'
 gem 'seed-fu'
 gem 'faker'
 gem 'counter_culture'
+gem 'bootstrap','~> 4.3.1'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
