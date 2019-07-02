@@ -6,4 +6,16 @@
   <div>
     <%= link_to "編集",edit_user_path(@user) %>
   </div>
+  <div>
+    <% @user.questions.each do |question| %>
+      <span>
+        <%= link_to question.title,question_path(question) %>
+      </span>
+      <span>
+        <% question.labels.each do |label| %>
+          <%= label.genre %>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
 <% end %>

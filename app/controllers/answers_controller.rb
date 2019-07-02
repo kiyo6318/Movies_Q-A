@@ -20,8 +20,7 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @best_answer_count = @question.answers.select {|answer| answer.best_answer == true}
-    if @answer.best_answer == false && @best_answer_count.empty?
+    if @answer.best_answer == false
       @answer.update(best_answer: true)
     end
     redirect_to question_path(@question)
