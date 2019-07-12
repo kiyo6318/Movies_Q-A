@@ -1,27 +1,22 @@
 <h1>質問一覧</h1>
-<%= search_form_for @q do |f| %>
-  <%= f.label :title_cont,"タイトル" %>
-  <%= f.search_field :title_cont %>
-
-  <%= f.label :status_eq,"状態" %>
-  <%= f.select :status_eq,@statuses.map{ |k,v| [Question.statuses_i18n[k],v] },include_blank:"指定なし" %>
-
-  <%= f.submit "検索" %>
-<% end %>
 
 <%= sort_link(@q,:status,"状態",default_order: :asc) %>
 <%= sort_link(@q,:created_at,"投稿日時",default_order: :desc) %>
 
-<% @questions.each do |question| %>
-  <div>
-    <span>
-      <%= link_to question.title,question_path(question) %>
-    </span>
-    <span>
-      <% question.labels.each do |label| %>
-        <%= label.genre %>
-      <% end %>
-    </span>
+<% @search_questions.each do |question| %>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <td>
+          <%= question.status_i18n %>
+          <%= link_to question.title,question_path(question) %>
+          <br>
+          <% question.labels.each do |label| %>
+              <%= label.genre %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
   </div>
 <% end %>
 <div>

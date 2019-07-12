@@ -13,18 +13,25 @@
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
-
-    <% if logged_in? %>
-      <%= link_to current_user.name,user_path(current_user.id) %>
-      <%= link_to "質問一覧",questions_path %>
-      <%= link_to "質問投稿",new_question_path %>
-      <%= link_to "ユーザー 一覧",users_path%>
-      <%= link_to "ログアウト",session_path(current_user.id),method: :delete %>
-    <% else %>
-      <%= link_to "質問一覧",questions_path %>
-      <%= link_to "ログイン",new_session_path %>
-      <%= link_to "ユーザー登録",new_user_path%>
-    <% end %>
-    <%= yield %>
+    <div class="navbar bg-dark">
+      <% if logged_in? %>
+        <%= link_to current_user.name,user_path(current_user.id),class:"btn" %>
+        <%= link_to "質問一覧",questions_path,class:"btn" %>
+        <%= link_to "質問投稿",new_question_path,class:"btn" %>
+          <%= search_form_for @search,url: questions_path do |f|%>
+            <%= f.text_field :title_or_details_or_labels_genre_cont_any,placeholder: "キーワードを入力(映画のタイトルなど)",size:30 %>
+            <%= f.submit %>
+          <% end %>
+        <%= link_to "ユーザー 一覧",users_path,class:"btn"%>
+        <%= link_to "ログアウト",session_path(current_user.id),method: :delete,class:"btn" %>
+      <% else %>
+        <%= link_to "質問一覧",questions_path,class:"btn" %>
+        <%= link_to "ログイン",new_session_path,class:"btn" %>
+        <%= link_to "ユーザー登録",new_user_path,class:"btn" %>
+      <% end %>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

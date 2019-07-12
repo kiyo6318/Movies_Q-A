@@ -1,0 +1,47 @@
+input[type='text']:focus {
+  outline: none;
+}
+
+textarea{
+  background-color: #f5f5f5;
+}
+
+textarea:hover {
+  resize: none;
+  background-color: #ebebeb;
+}
+
+textarea:focus {
+  background-color: #FFFFFF;
+}
+
+.title-field{
+  border: none;
+  border-bottom: 1px solid #1b2538;
+}
+
+.title-field:focus{
+  border-bottom: 2px solid #1b2538;
+}
+
+#q-show{
+  padding: 10px;
+  border-bottom: 2px solid;
+}
+
+#a-show{
+  padding: 5px;
+  border-top: 1px solid;
+}
+
+.navbar .btn{
+  color: #FFF;
+}
+
+.navbar .btn:hover{
+  color: #aaa;
+}
+
+input::-webkit-input-placeholder{
+  font-size: 13px;
+}
