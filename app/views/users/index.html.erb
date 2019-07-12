@@ -1,11 +1,17 @@
 <h1>ユーザー一覧</h1>
 <%= sort_link(@q,:best_answers_count,"ベストアンサーランキング",default_order: :desc) %>
 <% @users.each do |user| %>
-  <div>
-    <%= link_to user.name,user_path(user) %>
-    <%= user.best_answers_count %>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <td>
+          <%= link_to user.name,user_path(user),class:"btn" %>
+          <%= user.best_answers_count %>
+        </td>
+      </tr>
+    </table>
   </div>
 <% end %>
 <div>
-    <%= paginate @users %>
+  <%= paginate @users %>
 </div>

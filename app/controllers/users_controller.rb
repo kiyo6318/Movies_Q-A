@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: %i(edit update destroy)
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result.includes(:answers).page(params[:page]).per(10)
+    @users = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new

@@ -8,14 +8,14 @@
     </ul>
   <% end %>
 
-  <div>
+  <div class="mx-auto" style="width: 600px;">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title,size:70,placeholder:"タイトルを入力してください",class:"title-field" %>
   </div>
 
-  <div>
+  <div class="mx-auto" style="width: 700px;">
     <%= f.label :details %>
-    <%= f.text_area :details %>
+    <%= f.text_area :details,size:"80x20",placeholder:"質問内容を入力してください" %>
   </div>
   <% if @question.id.present? %>
     <div>
