@@ -19,6 +19,7 @@ gem 'ransack'
 gem 'kaminari','~> 0.17.0'
 gem 'seed-fu'
 gem 'faker'
+gem 'counter_culture'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -35,6 +36,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 group :test do

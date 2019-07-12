@@ -14,7 +14,9 @@
 
 <% @questions.each do |question| %>
   <div>
-    <%= link_to question.title,question_path(question) %>
+    <span>
+      <%= link_to question.title,question_path(question) %>
+    </span>
     <span>
       <% question.labels.each do |label| %>
         <%= label.genre %>
