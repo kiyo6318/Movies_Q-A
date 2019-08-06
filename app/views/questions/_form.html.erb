@@ -8,14 +8,12 @@
     </ul>
   <% end %>
 
-  <div class="mx-auto" style="width: 600px;">
-    <%= f.label :title %>
-    <%= f.text_field :title,size:70,placeholder:"タイトルを入力してください",class:"title-field" %>
+  <div class="d-flex justify-content-center">
+    <%= f.text_field :title,placeholder:"タイトルを入力してください",class:"title-field" %>
   </div>
 
-  <div class="mx-auto" style="width: 700px;">
-    <%= f.label :details %>
-    <%= f.text_area :details,size:"80x20",placeholder:"質問内容を入力してください" %>
+  <div class="d-flex justify-content-center">
+    <%= f.text_area :details,placeholder:"質問内容を入力してください",class:"details-field" %>
   </div>
   <% if @question.id.present? %>
     <div>
@@ -24,13 +22,13 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="check_boxes mx-auto">
     <%= f.collection_check_boxes(:label_ids,Label.all,:id,:genre) do |c|%>
       <%= c.label { c.check_box + c.text } %>
     <% end %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="d-flex justify-content-center">
+    <%= f.submit t("view.post"),class:"btn btn-primary" %>
   </div>
 <% end %>

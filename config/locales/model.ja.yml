@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      question: 質問
+      answer: 回答
+      label: ラベル
+      session: セッション
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        admin: 管理者
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        created_at: 登録日時
+      question:
+        title: タイトル
+        details: 詳細
+        status: ステータス
+        created_at: 投稿日時
+        updated_at: 更新日時
+      answer:
+        content: 回答内容
+        best_answer: ベストアンサー
+        created_at: 投稿日時

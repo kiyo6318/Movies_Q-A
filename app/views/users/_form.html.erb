@@ -8,27 +8,27 @@
   </ul>
   <% end %>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <span><%= f.label :name %></span>
+    <span><%= f.text_field :name ,class:"form-control",style:"width:300px"%></span>
   </div>
 
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+  <div class="form-group">
+    <span><%= f.label :email %></span>
+    <span><%= f.text_field :email ,class:"form-control",style:"width:300px" %></span>
   </div>
 
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+  <div class="form-group">
+    <span><%= f.label :password %></span>
+    <span><%= f.password_field :password ,class:"form-control",style:"width:300px"%></span>
   </div>
 
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+  <div class="form-group">
+    <span><%= f.label :password_confirmation %></span>
+    <span><%= f.password_field :password_confirmation ,class:"form-control",style:"width:300px"%></span>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="text-right">
+   <span><%= f.submit class:"btn btn-primary" %></span>
   </div>
 <% end %>
