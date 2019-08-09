@@ -1,4 +1,9 @@
 <h1>ユーザー情報編集</h1>
-<%= render "form" %>
-<br>
-<%= link_to "ユーザー削除",user_path(@user.id),method: :delete,data:{confirm:"本当に削除しますか？"},class:"btn btn-danger" %>
+<div class="d-flex justify-content-center">
+  <%= render "form" %>
+</div>
+<% if @user.admin == false %>
+  <div class="user-delete d-flex justify-content-center">
+    <%= link_to "ユーザー削除",user_path(@user.id),method: :delete,data:{confirm:"本当に削除しますか？"},class:"btn btn-danger" %>
+  </div>
+<% end %>

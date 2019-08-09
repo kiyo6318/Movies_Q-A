@@ -5,15 +5,15 @@ RSpec.feature "質問管理機能",type: :system do
     @test_questioner = User.create(name:"テストユーザー",email:"test@mail.com",password:"password",password_confirmation:"password")
     @test_question = Question.create(title:"テストタイトル",details:"テスト詳細",status:0,questioner_id:@test_questioner.id)
     visit new_session_path
-    fill_in "Email",with: "test@mail.com"
-    fill_in "Password",with: "password"
-    click_button "Log in"
+    fill_in "メールアドレス",with: "test@mail.com"
+    fill_in "パスワード",with: "password"
+    click_button "ログイン"
   end
   scenario "質問投稿テスト" do
     visit new_question_path
-    fill_in "Title",with: "投稿テストタイトル"
-    fill_in "Details",with: "投稿テスト詳細"
-    click_button "登録する"
+    fill_in "question_title",with: "投稿テストタイトル"
+    fill_in "question_details",with: "投稿テスト詳細"
+    click_button "投稿する"
     expect(page).to have_content "投稿テストタイトル"
   end
 
@@ -37,7 +37,7 @@ RSpec.feature "質問管理機能",type: :system do
     visit questions_path
     click_link "テストタイトル"
     click_link "質問編集"
-    fill_in "Details",with: "編集テスト詳細"
+    fill_in "question_details",with: "編集テスト詳細"
     click_button "更新する"
     expect(page).to have_content "編集テスト詳細"
   end

@@ -77,3 +77,11 @@ input::-webkit-input-placeholder{
 .best_answer{
   color: #F08A92;
 }
+
+.question-delete{
+  margin-top: 1vh;
+}
+
+.user-delete{
+  margin-top: 1vh;
+}
