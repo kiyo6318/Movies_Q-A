@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
   before_action :authenticate_user, only: %i(edit update destroy)
   before_action :ensure_correct_user, only: %i(edit update destroy)
+  before_action :admin_cannot_delete, only: %i(destroy)
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)
@@ -54,6 +55,12 @@ class UsersController < ApplicationController
   def ensure_correct_user
     if @user != current_user
       redirect_back(fallback_location: questions_path,notice:"権限がありません")
+    end
+  end
+
+  def admin_cannot_delete
+    if @user.admin == true
+      redirect_to user_path(@user.id),notice:"管理者は削除できません"
     end
   end
 end
