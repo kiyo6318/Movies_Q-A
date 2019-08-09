@@ -15,13 +15,37 @@ textarea:focus {
   background-color: #FFFFFF;
 }
 
+.form-group{
+  margin-top: 3rem;
+}
+
 .title-field{
+  width: 40vw;
   border: none;
   border-bottom: 1px solid #1b2538;
 }
 
 .title-field:focus{
   border-bottom: 2px solid #1b2538;
+}
+
+.details-field{
+  width: 40vw;
+  height: 30vh;
+  margin-top: 5vh;
+}
+
+.answer-field{
+  width: 50vw;
+  height: 30vh;
+}
+
+.answer-btn{
+  margin-bottom: 1rem;
+}
+
+.check_boxes{
+  width: 40vw;
 }
 
 #q-show{
@@ -44,4 +68,12 @@ textarea:focus {
 
 input::-webkit-input-placeholder{
   font-size: 13px;
+}
+
+.table-responsive{
+  padding-top: 1vh;
+}
+
+.best_answer{
+  color: #F08A92;
 }

@@ -11,10 +11,10 @@
   <% end %>
 
   <div>
-    <%= f.text_area :content,size:"70x10",placeholder:"回答を入力" %>
+    <%= f.text_area :content,placeholder:"回答を入力",class: "answer-field" %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="text-right">
+    <%= f.submit t("view.post") ,class:"btn btn-primary" %>
   </div>
 <% end %>

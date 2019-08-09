@@ -1,7 +1,7 @@
 <div id="q-show">
   <div>
     <% @question.labels.each do |label| %>
-      <%= label.genre %>
+    <%= label.genre %>
     <% end %>
   </div>
   <div class="row">
@@ -12,23 +12,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-9 offset-1">
+    <div class="col-8 offset-2">
       <%= @question.details %>
     </div>
   </div>
 </div>
 <br>
-  <div class="h5">回答 <%= @question.answers.count %> 件</div>
-  <div id="answers_area">
-    <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
-  </div>
+<div class="h5">回答 <%= @question.answers.count %> 件</div>
+<div id="answers_area">
+  <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
+</div>
 
-  <div class="mx-auto" style="width: 600px;">
-    <%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
-  </div>
+<div class="d-flex justify-content-center">
+  <%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
+</div>
 
-  <% if @question.user == current_user %>
-    <div>
-      <%= link_to "質問編集",edit_question_path(@question) %>
-    </div>
-  <% end %>
+<% if @question.user == current_user %>
+<div class="text-center">
+  <%= link_to "質問編集",edit_question_path(@question),class: "btn btn-info btn-sm" %>
+</div>
+<% end %>

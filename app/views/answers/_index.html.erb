@@ -1,29 +1,30 @@
-<div>
 <% answers.each do |answer| %>
-<% if answer.id.present? %>
+  <% if answer.id.present? %>
     <div id="a-show">
       <%= link_to answer.user.name ,user_path(answer.user) if answer.user %>
     </div>
-
-  <div class="row">
-    <div class="col-7 offset-2">
-      <%= answer.content %>
+    <div class="row">
+      <div class="col-7 offset-2">
+        <%= answer.content %>
+      </div>
+      <div class="col-3">
+        <% if answer.best_answer%>
+          ベストアンサー
+        <% end %>
+      </div>
     </div>
-    <div class="col-3">
-      <% if answer.best_answer%>
-        ベストアンサー
-      <% end %>
+    <div class="row answer-btn">
+      <div class="offset-8">
+        <% if current_user != nil && current_user == answer.user%>
+          <%= link_to "回答を削除",question_answer_path(question.id,answer.id),method: :delete,data: {
+            confirm: "本当に削除しますか？",remote: true },class: "btn btn-danger btn-sm" %>
+        <% end %>
+      </div>
+      <div>
+        <% if current_user == question.user && answer.best_answer == false && answer.user != question.user && question.answers.select {|answer| answer.best_answer == true}.empty? %>
+            <%= link_to "ベストアンサーに選ぶ",question_answer_path(question.id,answer.id),method: :put,data: {confirm: "この回答をベストアンサーに決定しますか？"} %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="text-right">
-    <% if current_user != nil && current_user == answer.user%>
-      <%= link_to "回答を削除",question_answer_path(question.id,answer.id),method: :delete,data: {
-        confirm: "本当に削除しますか？",remote: true } %>
-    <% end %>
-      <% if current_user == question.user && answer.best_answer == false && answer.user != question.user && question.answers.select {|answer| answer.best_answer == true}.empty? %>
-        <%= link_to "ベストアンサーに選ぶ",question_answer_path(question.id,answer.id),method: :put,data: {confirm: "この回答をベストアンサーに決定しますか？"} %>
-      <% end %>
-  </div>
   <% end %>
-  <% end %>
-</div>
+<% end %>

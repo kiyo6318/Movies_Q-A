@@ -6,7 +6,7 @@
       <tr>
         <td>
           <%= link_to user.name,user_path(user),class:"btn" %>
-          <%= user.best_answers_count %>
+          <span class="best_answer">ベストアンサー <%= user.best_answers_count %></span>
         </td>
       </tr>
     </table>
