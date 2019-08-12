@@ -1,5 +1,5 @@
-<%= sort_link(@q,:status,"状態",default_order: :asc) %>
-<%= sort_link(@q,:created_at,"投稿日時",default_order: :desc) %>
+<%= sort_link(@q,:status,"状態でソート",default_order: :asc) %>
+<%= sort_link(@q,:created_at,"投稿日時でソート",default_order: :desc) %>
 
 
 <div class="table-responsive">
@@ -7,11 +7,15 @@
     <% @search_questions.each do |question| %>
     <tr>
       <td>
-        <%= question.status_i18n %>
+      <% if question.status_i18n == "未解決" %>
+        <span class="unsolved"><%= question.status_i18n %></span>
+      <% elsif question.status_i18n == "解決済" %>
+        <span class="resolved"><%= question.status_i18n %></span>
+      <% end %>
         <%= link_to question.title,question_path(question) %>
         <br>
         <% question.labels.each do |label| %>
-        <%= label.genre %>
+        <span class="genre"><%= label.genre %></span>
         <% end %>
       </td>
     </tr>

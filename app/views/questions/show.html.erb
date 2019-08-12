@@ -1,11 +1,18 @@
 <div id="q-show">
   <div>
     <% @question.labels.each do |label| %>
-    <%= label.genre %>
+    <span class="genre"><%= label.genre %></span>
     <% end %>
   </div>
+  <div class="created_at">投稿: <%= @question.created_at.to_s(:created_at) %></div>
   <div class="row">
-    <div class="col"><%= @question.status_i18n %></div>
+    <div class="col">
+      <% if @question.status_i18n == "未解決" %>
+        <span class="unsolved"><%= @question.status_i18n %></span>
+      <% elsif @question.status_i18n == "解決済" %>
+        <span class="resolved"><%= @question.status_i18n %></span>
+      <% end %>
+    </div>
     <div class="h4 col-8"><%= @question.title %></div>
     <div class="col">
       <%= link_to @question.user.name,user_path(@question.user) %>

@@ -4,3 +4,9 @@ ja:
     password: パスワード
     login: ログイン
     post: 投稿する
+    update: 更新する
+    first: "&laquo; 最初へ"
+    last: "最後へ &raquo;"
+    next: "次へ &rsaquo;"
+    previous: "&lsaquo; 前へ"
+    truncate: "&hellip;"

@@ -10,8 +10,8 @@ RSpec.feature "回答管理機能",type: :system do
 
   scenario "回答投稿テスト" do
     visit question_path(@test_question.id)
-    fill_in "Content",with: "回答テスト投稿"
-    click_button "登録する"
+    fill_in "answer_content",with: "回答テスト投稿"
+    click_button "投稿する"
     expect(page).to have_content "回答テスト投稿"
   end
 
@@ -22,9 +22,9 @@ RSpec.feature "回答管理機能",type: :system do
 
   scenario "回答削除テスト" do
     visit new_session_path
-    fill_in "Email",with: "test2@mail.com"
-    fill_in "Password",with: "password"
-    click_button "Log in"
+    fill_in "メールアドレス",with: "test2@mail.com"
+    fill_in "パスワード",with: "password"
+    click_button "ログイン"
     visit question_path(@test_question.id)
     click_link "回答を削除"
     expect(page.driver.browser.switch_to.alert.text).to have_content "本当に削除しますか？"
@@ -34,9 +34,9 @@ RSpec.feature "回答管理機能",type: :system do
 
   scenario "ベストアンサーテスト" do
     visit new_session_path
-    fill_in "Email",with: "test@mail.com"
-    fill_in "Password",with: "password"
-    click_button "Log in"
+    fill_in "メールアドレス",with: "test@mail.com"
+    fill_in "パスワード",with: "password"
+    click_button "ログイン"
     visit question_path(@test_question.id)
     click_link "ベストアンサーに選ぶ"
     expect(page.driver.browser.switch_to.alert.text).to have_content "この回答をベストアンサーに決定しますか？"

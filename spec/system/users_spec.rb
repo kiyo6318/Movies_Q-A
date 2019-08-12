@@ -4,16 +4,16 @@ RSpec.feature "ユーザー管理機能",type: :system do
   background do
     @user = User.create(name:"テストユーザー",email:"test@mail.com",admin: false,password:"password",password_confirmation:"password")
     visit new_session_path
-    fill_in "Email",with: "test@mail.com"
-    fill_in "Password",with: "password"
-    click_button "Log in"
+    fill_in "メールアドレス",with: "test@mail.com"
+    fill_in "パスワード",with: "password"
+    click_button "ログイン"
   end
   scenario "ユーザー作成テスト" do
     visit new_user_path
-    fill_in "Name",with: "作成テスト"
-    fill_in "Email",with: "create_test@mail.com"
-    fill_in "Password",with: "password"
-    fill_in "Password confirmation",with: "password"
+    fill_in "名前",with: "作成テスト"
+    fill_in "メールアドレス",with: "create_test@mail.com"
+    fill_in "パスワード",with: "password"
+    fill_in "確認用パスワード",with: "password"
     click_button "登録する"
     expect(page).to have_content "作成テスト"
   end
@@ -32,9 +32,9 @@ RSpec.feature "ユーザー管理機能",type: :system do
 
   scenario "ユーザー編集テスト" do
     visit edit_user_path(@user.id)
-    fill_in "Name",with: "ユーザー編集テスト"
-    fill_in "Password",with: "password"
-    fill_in "Password confirmation",with: "password"
+    fill_in "名前",with: "ユーザー編集テスト"
+    fill_in "パスワード",with: "password"
+    fill_in "確認用パスワード",with: "password"
     click_button "更新する"
     expect(page).to have_content "ユーザー編集テスト"
   end
@@ -50,10 +50,9 @@ RSpec.feature "ユーザー管理機能",type: :system do
   scenario "ログイン&ログアウト" do
     click_link "ログアウト"
     click_link "ログイン"
-    fill_in "Email",with: "test@mail.com"
-    fill_in "Password",with: "password"
-    click_button "Log in"
-    expect(page).to have_content "ユーザープロフィール"
+    fill_in "メールアドレス",with: "test@mail.com"
+    fill_in "パスワード",with: "password"
+    click_button "ログイン"
     expect(page).to have_content "テストユーザー"
   end
 
