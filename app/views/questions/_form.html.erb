@@ -16,7 +16,7 @@
     <%= f.text_area :details,placeholder:"質問内容を入力してください",class:"details-field" %>
   </div>
   <% if @question.id.present? %>
-    <div>
+    <div class="status-field d-flex justify-content-center">
       <%= f.label :status %>
       <%= f.select :status,Question.statuses.keys.map {|k| [Question.statuses_i18n[k],k]} %>
     </div>

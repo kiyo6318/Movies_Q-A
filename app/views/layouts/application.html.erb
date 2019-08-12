@@ -10,36 +10,41 @@
 </head>
 
 <body>
-  <% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <span class="navbar-brand"><%= link_to "MoviesQ&A",questions_path,class:"btn" %></span>
-    <div class="collapse navbar-collapse" id="Navbar">
-      <% if logged_in? %>
-      <span class="nav-item"><%= link_to current_user.name,user_path(current_user.id),class:"btn nav-link" %></span>
-      <span class="nav-item"><%= link_to "質問一覧",questions_path,class:"btn nav-link" %></span>
-      <span class="nav-item"><%= link_to "質問投稿",new_question_path,class:"btn nav-link" %></span>
-      <span class="nav-item"><%= link_to "ユーザー 一覧",users_path,class:"btn nav-link"%></span>
-      <span class="nav-item"><%= link_to "ログアウト",session_path(current_user.id),method: :delete,class:"btn nav-link" %></span>
-      <% else %>
-      <span class="nav-item"><%= link_to "質問一覧",questions_path,class:"btn nav-link" %></span>
-      <span class="nav-item"><%= link_to "ログイン",new_session_path,class:"btn nav-link" %></span>
-      <span class="nav-item"><%= link_to "ユーザー登録",new_user_path,class:"btn nav-link" %></span>
-      <% end %>
+  <div class="wrapper">
+    <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <span class="navbar-brand"><%= link_to "MoviesQ&A",questions_path,class: "btn",style:"font-size:1.5rem; font-style:oblique" %></span>
+      <div class="collapse navbar-collapse" id="Navbar">
+        <% if logged_in? %>
+        <span class="nav-item"><%= link_to current_user.name,user_path(current_user.id),class:"btn nav-link" %></span>
+        <span class="nav-item"><%= link_to "質問一覧",questions_path,class:"btn nav-link" %></span>
+        <span class="nav-item"><%= link_to "質問投稿",new_question_path,class:"btn nav-link" %></span>
+        <span class="nav-item"><%= link_to "ユーザー 一覧",users_path,class:"btn nav-link"%></span>
+        <span class="nav-item"><%= link_to "ログアウト",session_path(current_user.id),method: :delete,class:"btn nav-link" %></span>
+        <% else %>
+        <span class="nav-item"><%= link_to "質問一覧",questions_path,class:"btn nav-link" %></span>
+        <span class="nav-item"><%= link_to "ログイン",new_session_path,class:"btn nav-link" %></span>
+        <span class="nav-item"><%= link_to "ユーザー登録",new_user_path,class:"btn nav-link" %></span>
+        <% end %>
+      </div>
+      <span class="mr-3">
+        <%= search_form_for @search,url: questions_path do |f|%>
+        <%= f.text_field :title_or_details_or_labels_genre_cont_any,placeholder: "キーワードを入力(映画のタイトルなど)",size:30 %>
+        <%= f.submit %>
+        <% end %>
+      </span>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <span class="mr-3">
-      <%= search_form_for @search,url: questions_path do |f|%>
-      <%= f.text_field :title_or_details_or_labels_genre_cont_any,placeholder: "キーワードを入力(映画のタイトルなど)",size:30 %>
-      <%= f.submit %>
-      <% end %>
-    </span>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-  <div class="container">
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer>
+      <div class="d-flex justify-content-center"><%= link_to "MoviesQ&A",questions_path,class: "btn",style:"font-size:2rem; font-style:oblique" %></div>
+    </footer>
   </div>
 </body>
 </html>
