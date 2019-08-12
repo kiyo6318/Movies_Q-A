@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i(show edit update destroy)
+  before_action :set_user, only: %i(edit update destroy)
   before_action :authenticate_user, only: %i(edit update destroy)
   before_action :ensure_correct_user, only: %i(edit update destroy)
   before_action :admin_cannot_delete, only: %i(destroy)
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.includes(questions: :labels).find(params[:id])
   end
 
   def edit
