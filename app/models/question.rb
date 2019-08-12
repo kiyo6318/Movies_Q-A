@@ -6,4 +6,5 @@ class Question < ApplicationRecord
   validates :title,presence: true
   validates :details,presence: true
   enum status:{unsolved:0,resolved:1}
+  default_scope -> { order(created_at: :desc) }
 end
