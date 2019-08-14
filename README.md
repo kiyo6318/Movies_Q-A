@@ -45,7 +45,7 @@ https://cacoo.com/diagrams/sXafjatzTx6vqXvk/B92A7
 ### 使用予定Gem
 - ransack
 - kaminari
-- devise
+- counter_culture
 - dotenv-rails
 - rails-i18n
 - faker

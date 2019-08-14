@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
       if @answer.save
         format.js { render :index }
       else
-        format.html { redirect_to question_path(@question),notice:"投稿できませんでした" }
+        format.js { render :form }
       end
     end
   end

@@ -1,2 +1,3 @@
 $("#answers_area").html("<%= j(render 'answers/index',{ answers:@answer.question.answers,question:@answer.question }) %>")
 $("textarea").val('')
+$("#result").hide();
