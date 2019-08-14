@@ -58,7 +58,6 @@ RSpec.feature "質問管理機能",type: :system do
     end
     visit questions_path
     click_link "次へ ›"
-    binding.pry
     expect(page).to have_content "次へタイトル40"
   end
 
