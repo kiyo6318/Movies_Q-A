@@ -121,6 +121,10 @@ input::-webkit-input-placeholder{
   color: #F08A92;
 }
 
+.question-edit{
+  margin-top: 1vh;
+}
+
 .question-delete{
   margin-top: 1vh;
 }
