@@ -4,4 +4,5 @@ genres =
 
 genres.each do |genre|
   Label.create(genre:"#{genre}")
+  puts "test"
 end
