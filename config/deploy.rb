@@ -66,6 +66,7 @@ namespace :deploy do
       invoke 'seed_fu:apply'
     end
   end
+  after 'deploy:migrating', 'deploy:apply_seedfu'
 
   # desc 'Load seed data into database'
   # task :seed_fu do
