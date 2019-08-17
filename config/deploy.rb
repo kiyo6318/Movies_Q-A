@@ -54,6 +54,17 @@ namespace :deploy do
     end
   end
 
+  desc 'Load seed data into database'
+  task :seed_fu do
+    on roles(fetch(:seed_fu_roles) || :app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, :rails, 'db:seed_fu'
+        end
+      end
+    end
+  end
+
   after :publishing, :restart
 
   after :restart, :clear_cache do
