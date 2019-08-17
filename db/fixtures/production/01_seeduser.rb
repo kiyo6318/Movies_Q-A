@@ -7,3 +7,12 @@ User.create(
   password: "adminpassword",
   password_confirmation: "adminpassword"
   )
+
+15.times do |i|
+  User.create(
+    name: Faker::Name.name,
+    email: "test#{i + 1}@mail.com",
+    password: "password",
+    password_confirmation: "password"
+    )
+end
