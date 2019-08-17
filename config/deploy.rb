@@ -61,9 +61,9 @@ namespace :deploy do
     end
   end
 
-  require 'seed-fu/capistrano'
+  # require 'seed-fu/capistrano'
 
-  after 'deploy:update_code', 'db:seed_fu'
+  # after 'deploy:update_code', 'db:seed_fu'
 
   desc 'Load seed data into database'
   task :seed_fu do
