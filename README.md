@@ -50,7 +50,6 @@ https://cacoo.com/diagrams/sXafjatzTx6vqXvk/B92A7
 - rails-i18n
 - faker
 - seed-fu
-- fow-aws
 - jquery-rails
 - bootstrap
 - rails-pry
