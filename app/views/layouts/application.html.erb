@@ -31,7 +31,7 @@
       </div>
       <span class="mr-3">
         <%= search_form_for @search,url: questions_path do |f|%>
-        <%= f.text_field :title_or_details_or_labels_genre_cont_any,placeholder: "キーワードを入力(映画のタイトルなど)",size:30 %>
+        <%= f.search_field :search_cont_any,placeholder: "キーワードを入力(映画のタイトルなど)",size:30 %>
         <%= f.submit %>
         <% end %>
       </span>

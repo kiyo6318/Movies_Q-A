@@ -11,9 +11,8 @@ class ApplicationController < ActionController::Base
 
   def set_search
     if params[:q] != nil
-      params[:q]['title_or_details_or_labels_genre_cont_any'] = params[:q]['title_or_details_or_labels_genre_cont_any'].to_s.split(/[\p{blank}\s]+/)
       @search = Question.ransack(params[:q])
-      @search_questions = @search.result.includes(:labels).page(params[:page]).per(10)
+      @search_questions = @search.result.distinct.includes(:labels).page(params[:page]).per(10)
     else
       @search = Question.ransack(params[:q])
       @search_questions = @search.result.includes(:labels).page(params[:page]).per(10)
