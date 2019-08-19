@@ -25,7 +25,6 @@
   </div>
 </div>
 <br>
-<div class="h5">回答 <%= @question.answers.count %> 件</div>
 <div id="answers_area">
   <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
 </div>
