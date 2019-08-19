@@ -22,6 +22,7 @@ class AnswersController < ApplicationController
   def update
     if @answer.best_answer == false
       @answer.update(best_answer: true)
+      @question.update(status: 1)
     end
     redirect_to question_path(@question)
   end
