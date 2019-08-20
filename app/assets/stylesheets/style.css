@@ -14,7 +14,7 @@ body{
 }
 
 .cover{
-  background-image: url("/movie.jpg");
+  background-image: url("images/movie.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
