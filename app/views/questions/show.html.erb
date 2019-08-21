@@ -1,40 +1,42 @@
-<div id="q-show">
-  <div>
-    <% @question.labels.each do |label| %>
-    <span class="genre"><%= label.genre %></span>
-    <% end %>
-  </div>
-  <div class="created_at">投稿: <%= @question.created_at.to_s(:created_at) %></div>
-  <div class="row">
-    <div class="col">
-      <% if @question.status_i18n == "未解決" %>
-        <span class="unsolved"><%= @question.status_i18n %></span>
-      <% elsif @question.status_i18n == "解決済" %>
-        <span class="resolved"><%= @question.status_i18n %></span>
+<div class="container">
+  <div id="q-show">
+    <div>
+      <% @question.labels.each do |label| %>
+      <span class="genre"><%= label.genre %></span>
       <% end %>
     </div>
-    <div class="h4 col-8"><%= @question.title %></div>
-    <div class="col">
-      <%= link_to @question.user.name,user_path(@question.user) %>
+    <div class="created_at">投稿: <%= @question.created_at.to_s(:created_at) %></div>
+    <div class="row">
+      <div class="col">
+        <% if @question.status_i18n == "未解決" %>
+          <span class="unsolved"><%= @question.status_i18n %></span>
+        <% elsif @question.status_i18n == "解決済" %>
+          <span class="resolved"><%= @question.status_i18n %></span>
+        <% end %>
+      </div>
+      <div class="h4 col-8"><%= @question.title %></div>
+      <div class="col">
+        <%= link_to @question.user.name,user_path(@question.user) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <%= @question.details %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-8 offset-2">
-      <%= @question.details %>
-    </div>
+  <br>
+  <div id="answers_area">
+    <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
   </div>
-</div>
-<br>
-<div id="answers_area">
-  <%= render partial: "answers/index",locals: {answers:@answers,question:@question} %>
-</div>
 
-<div class="d-flex justify-content-center">
-  <%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
-</div>
+  <div class="d-flex justify-content-center">
+    <%= render partial: "answers/form",locals: {answer:@answer,question:@question} %>
+  </div>
 
-<% if @question.user == current_user %>
-<div class="question-edit d-flex justify-content-center">
-  <%= link_to "質問編集",edit_question_path(@question),class: "btn btn-info btn-sm" %>
+  <% if @question.user == current_user %>
+  <div class="question-edit d-flex justify-content-center">
+    <%= link_to "質問編集",edit_question_path(@question),class: "btn btn-info btn-sm" %>
+  </div>
+  <% end %>
 </div>
-<% end %>

@@ -1,37 +1,39 @@
-<div class="h3">
-  <%= @user.name %>
-</div>
-<div>
-  質問数 <%= @user.questions.count %>
-</div>
-<div>
-  回答数 <%= @user.answers.count %>
-</div>
-<div class="best_answer">
-  ベストアンサー <%= @user.best_answers_count %>
-</div>
-<% if @user == current_user %>
-  <div>
-    <%= link_to "アカウント情報編集",edit_user_path(@user), class: "btn btn-info btn-sm" %>
+<div class="container">
+  <div class="h3">
+    <%= @user.name %>
   </div>
-<% end %>
-<div class="table-responsive">
-  <table class="table table-hover">
-    <% @user.questions.each do |question| %>
-    <tr>
-      <td>
-        <% if question.status_i18n == "未解決" %>
-        <span class="unsolved"><%= question.status_i18n %></span>
-        <% elsif question.status_i18n == "解決済" %>
-        <span class="resolved"><%= question.status_i18n %></span>
-        <% end %>
-        <%= link_to question.title,question_path(question) %>
-        <br>
-        <% question.labels.each do |label| %>
-        <span class="genre"><%= label.genre %></span>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
+  <div>
+    質問数 <%= @user.questions.count %>
+  </div>
+  <div>
+    回答数 <%= @user.answers.count %>
+  </div>
+  <div class="best_answer">
+    ベストアンサー <%= @user.best_answers_count %>
+  </div>
+  <% if @user == current_user %>
+    <div>
+      <%= link_to "アカウント情報編集",edit_user_path(@user), class: "btn btn-info btn-sm" %>
+    </div>
+  <% end %>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <% @user.questions.each do |question| %>
+      <tr>
+        <td>
+          <% if question.status_i18n == "未解決" %>
+          <span class="unsolved"><%= question.status_i18n %></span>
+          <% elsif question.status_i18n == "解決済" %>
+          <span class="resolved"><%= question.status_i18n %></span>
+          <% end %>
+          <%= link_to question.title,question_path(question) %>
+          <br>
+          <% question.labels.each do |label| %>
+          <span class="genre"><%= label.genre %></span>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
