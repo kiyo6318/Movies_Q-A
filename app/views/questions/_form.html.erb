@@ -1,39 +1,41 @@
-<%= form_with(model:@question,local:true) do |f| %>
-  <% if @question.errors.any? %>
-  <h2><%= @question.errors.count %>件のエラーがあります。</h2>
-    <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <div class="d-flex justify-content-center">
-    <%= f.text_field :title,placeholder:"タイトルを入力してください",class:"title-field" %>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <%= f.text_area :details,placeholder:"質問内容を入力してください",class:"details-field" %>
-  </div>
-  <% if @question.id.present? %>
-    <div class="status-field d-flex justify-content-center">
-      <%= f.label :status %>
-      <%= f.select :status,Question.statuses.keys.map {|k| [Question.statuses_i18n[k],k]} %>
-    </div>
-  <% end %>
-
-  <div class="check_boxes mx-auto">
-    <%= f.collection_check_boxes(:label_ids,Label.all,:id,:genre) do |c|%>
-      <%= c.label { c.check_box + c.text } %>
+<div class="container">
+  <%= form_with(model:@question,local:true) do |f| %>
+    <% if @question.errors.any? %>
+    <h2><%= @question.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </div>
-  <% if request.path_info == new_question_path %>
+
     <div class="d-flex justify-content-center">
-      <%= f.submit t("view.post"),class:"btn btn-primary" %>
+      <%= f.text_field :title,placeholder:"タイトルを入力してください",class:"title-field" %>
     </div>
-  <% else %>
+
     <div class="d-flex justify-content-center">
-      <%= f.submit t("view.update"),class:"btn btn-primary" %>
+      <%= f.text_area :details,placeholder:"質問内容を入力してください",class:"details-field" %>
     </div>
+    <% if @question.id.present? %>
+      <div class="status-field d-flex justify-content-center">
+        <%= f.label :status %>
+        <%= f.select :status,Question.statuses.keys.map {|k| [Question.statuses_i18n[k],k]} %>
+      </div>
+    <% end %>
+
+    <div class="check_boxes mx-auto">
+      <%= f.collection_check_boxes(:label_ids,Label.all,:id,:genre) do |c|%>
+        <%= c.label { c.check_box + c.text } %>
+      <% end %>
+    </div>
+    <% if request.path_info == new_question_path %>
+      <div class="d-flex justify-content-center">
+        <%= f.submit t("view.post"),class:"btn btn-primary" %>
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-center">
+        <%= f.submit t("view.update"),class:"btn btn-primary" %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

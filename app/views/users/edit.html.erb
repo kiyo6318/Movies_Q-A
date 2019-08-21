@@ -1,3 +1,4 @@
+<div class="container">
 <h1>ユーザー情報編集</h1>
 <div class="d-flex justify-content-center">
   <%= render "form" %>
@@ -7,3 +8,4 @@
     <%= link_to "ユーザー削除",user_path(@user.id),method: :delete,data:{confirm:"本当に削除しますか？"},class:"btn btn-danger" %>
   </div>
 <% end %>
+</div>

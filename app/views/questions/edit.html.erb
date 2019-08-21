@@ -1,5 +1,7 @@
-<h1>質問編集</h1>
-<%= render "form" %>
-<div class="question-delete d-flex justify-content-center">
-  <%= link_to "質問削除",question_path(@question),method: :delete,data:{confirm:"本当に削除しますか？"},class: "btn btn-danger" %>
+<div class="container">
+  <h1>質問編集</h1>
+  <%= render "form" %>
+  <div class="question-delete d-flex justify-content-center">
+    <%= link_to "質問削除",question_path(@question),method: :delete,data:{confirm:"本当に削除しますか？"},class: "btn btn-danger" %>
+  </div>
 </div>

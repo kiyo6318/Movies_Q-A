@@ -1,42 +1,42 @@
-<% if current_user == nil %>
-  <div class="cover">
-    <div class="cover-inner">
-      <h1><b><i>MoviesQ&A</i></b></h1>
-      <h4>鑑賞した作品の不明、不可解なシーンを質問し、他のユーザーと考察しましょう</h4>
-      <div class="cover-linkbox">
-        <h4><%= link_to "ユーザー登録する",new_user_path, class: "cover-link" %></h4>
-        <div>登録済みの方はこちらから<%= link_to "ログイン",new_session_path, class: "cover-link" %></div>
+  <% if current_user == nil %>
+    <div class="cover">
+      <div class="cover-inner">
+        <h1><b><i>MoviesQ&A</i></b></h1>
+        <h4>鑑賞した作品の不明、不可解なシーンを質問し、他のユーザーと考察しましょう</h4>
+        <div class="cover-linkbox">
+          <h4><%= link_to "ユーザー登録する",new_user_path, class: "cover-link" %></h4>
+          <div>登録済みの方はこちらから<%= link_to "ログイン",new_session_path, class: "cover-link" %></div>
+        </div>
+        <div class="cover-message">※質問の閲覧と回答はログインしなくても出来ます</div>
       </div>
-      <div class="cover-message">※質問の閲覧と回答はログインしなくても出来ます</div>
+    </div>
+  <% end %>
+
+  <div class="top container">
+    <%= sort_link(@q,:status,"質問状況(解決、未解決)でソート",default_order: :asc) %>
+    <%= sort_link(@q,:created_at,"投稿日時でソート",default_order: :desc) %>
+
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <% @search_questions.each do |question| %>
+        <tr>
+          <td>
+          <% if question.status_i18n == "未解決" %>
+            <span class="unsolved"><%= question.status_i18n %></span>
+          <% elsif question.status_i18n == "解決済" %>
+            <span class="resolved"><%= question.status_i18n %></span>
+          <% end %>
+            <%= link_to question.title,question_path(question) %>
+            <br>
+            <% question.labels.each do |label| %>
+            <span class="genre"><%= label.genre %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div>
+      <%= paginate @questions %>
     </div>
   </div>
-<% end %>
-
-<div class="top">
-  <%= sort_link(@q,:status,"質問状況(解決、未解決)でソート",default_order: :asc) %>
-  <%= sort_link(@q,:created_at,"投稿日時でソート",default_order: :desc) %>
-
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <% @search_questions.each do |question| %>
-      <tr>
-        <td>
-        <% if question.status_i18n == "未解決" %>
-          <span class="unsolved"><%= question.status_i18n %></span>
-        <% elsif question.status_i18n == "解決済" %>
-          <span class="resolved"><%= question.status_i18n %></span>
-        <% end %>
-          <%= link_to question.title,question_path(question) %>
-          <br>
-          <% question.labels.each do |label| %>
-          <span class="genre"><%= label.genre %></span>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-  <div>
-    <%= paginate @questions %>
-  </div>
-</div>
