@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'capistrano', '3.6.0' # capistranoのツール一式
