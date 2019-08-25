@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_112544) do
+ActiveRecord::Schema.define(version: 2019_08_21_224543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_07_02_112544) do
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_likes_on_question_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "question_labels", force: :cascade do |t|
@@ -63,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_112544) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "likes", "questions"
+  add_foreign_key "likes", "users"
   add_foreign_key "question_labels", "labels"
   add_foreign_key "question_labels", "questions"
 end

@@ -24,6 +24,29 @@
         <%= @question.details %>
       </div>
     </div>
+    <div class="row">
+      <div class="offset-2">
+        <% if current_user.present? %>
+          <% unless current_user.already_liked?(@question) %>
+            <%= button_to question_likes_path(@question),id: "like_button" do %>
+              <%= icon("far","thumbs-up") %> いいね <%= @question.likes.count %>
+            <% end %>
+          <% else %>
+            <%= button_to question_like_path(@question),method: :delete ,id: "like_button_already" do %>
+              <%= icon("fas","thumbs-up") %> いいね <%= @question.likes.count %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="offset-6">
+        <%= link_to("https://twitter.com/share?url=#{request.url}&text=#{@question.title}",onclick: "window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" ,title: 'Twitter', target: '_blank') do %>
+           <span class="twitter"><%= icon("fab","twitter") %> Tweet</span>
+        <% end %>
+        <%= link_to("http://line.me/R/msg/text/?#{request.url}&text=#{@question.title}",onclick: "window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=530, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" ,title: 'LINE', target: '_blank') do %>
+           <span class="line"><%= icon("fab","line") %></span>
+        <% end %>
+      </div>
+    </div>
   </div>
   <br>
   <div id="answers_area">

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :questions do
     resources :answers
+    resources :likes, only: [:create, :destroy]
   end
   resources :sessions,only:[:new,:create,:destroy]
 end

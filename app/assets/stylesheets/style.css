@@ -212,3 +212,35 @@ input::-webkit-input-placeholder{
 .genre{
   font-size: 0.8rem;
 }
+
+#like_button{
+  border: 1px solid #aaa;
+  border-radius: 3px;
+}
+
+#like_button_already{
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background-color: #aaa;
+}
+
+.likes_count{
+  font-size: 0.8rem;
+}
+
+.twitter{
+  color: #fff;
+  background-color: #007BFF;
+  border: 1px solid #007BFF;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.line{
+  color: #00B901;
+  font-size: 2.5rem;
+}
+
+.slack{
+  color: #999;
+}
