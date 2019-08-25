@@ -1,5 +1,5 @@
 <h3>ログイン</h3>
-<div class="d-flex justify-content-center">
+<div class="container d-flex justify-content-center">
   <%= form_with(scope: :session,url:sessions_path,local:true) do |f| %>
     <div class="form-group">
      <span><%= f.label :email, t("view.email") %></span>

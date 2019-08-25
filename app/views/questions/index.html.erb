@@ -31,6 +31,8 @@
             <% question.labels.each do |label| %>
             <span class="genre"><%= label.genre %></span>
             <% end %>
+            <br>
+            <div class="likes_count">いいね <%= question.likes.count %></div>
           </td>
         </tr>
         <% end %>
