@@ -1,13 +1,13 @@
 <div class="container">
   <div id="q-show">
+    <div class="created_at">投稿: <%= @question.created_at.to_s(:created_at) %></div>
     <div>
       <% @question.labels.each do |label| %>
       <span class="genre"><%= label.genre %></span>
       <% end %>
     </div>
-    <div class="created_at">投稿: <%= @question.created_at.to_s(:created_at) %></div>
     <div class="row">
-      <div class="col">
+      <div class="col-12 col-md-2">
         <% if @question.status_i18n == "未解決" %>
           <span class="unsolved"><%= @question.status_i18n %></span>
         <% elsif @question.status_i18n == "解決済" %>
@@ -15,18 +15,18 @@
         <% end %>
       </div>
       <div class="h4 col-8"><%= @question.title %></div>
-      <div class="col">
+      <div class="col-12 col-md-2">
         <%= link_to @question.user.name,user_path(@question.user) %>
       </div>
     </div>
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-12 col-md-8 offset-md-2">
         <%= @question.details %>
       </div>
     </div>
     <div class="row">
       <div class="offset-2">
-        <% if current_user.present? %>
+        <% if logged_in? %>
           <% unless current_user.already_liked?(@question) %>
             <%= button_to question_likes_path(@question),id: "like_button" do %>
               <%= icon("far","thumbs-up") %> いいね <%= @question.likes.count %>
@@ -38,12 +38,12 @@
           <% end %>
         <% end %>
       </div>
-      <div class="offset-6">
+      <div class="row offset-6 ex-share">
         <%= link_to("https://twitter.com/share?url=#{request.url}&text=#{@question.title}",onclick: "window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" ,title: 'Twitter', target: '_blank') do %>
-           <span class="twitter"><%= icon("fab","twitter") %> Tweet</span>
+           <div class="twitter"><%= icon("fab","twitter") %> Tweet</div>
         <% end %>
         <%= link_to("http://line.me/R/msg/text/?#{request.url}&text=#{@question.title}",onclick: "window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=530, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" ,title: 'LINE', target: '_blank') do %>
-           <span class="line"><%= icon("fab","line") %></span>
+           <div class="line"><%= icon("fab","line") %></div>
         <% end %>
       </div>
     </div>

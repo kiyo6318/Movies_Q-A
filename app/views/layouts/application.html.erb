@@ -4,7 +4,7 @@
   <title>MoviesQ&A</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -31,7 +31,7 @@
       </div>
       <span class="mr-3">
         <%= search_form_for @search,url: questions_path do |f|%>
-        <%= f.search_field :search_cont_any,placeholder: "キーワードを入力(映画のタイトルなど)",size:30 %>
+        <%= f.search_field :search_cont_any,placeholder: "キーワードを入力",size:30 %>
         <%= f.submit %>
         <% end %>
       </span>

@@ -7,9 +7,58 @@ body{
   word-wrap: break-word;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 750px) {
   .cover{
     display: none;
+  }
+  .navbar{
+    font-size: 0.7rem;
+  }
+  .navbar-toggler-icon{
+    font-size: 0.7rem;
+  }
+  .title-field{
+    width: 80vw;
+  }
+  .details-field{
+    width: 80vw;
+  }
+  .answer-field{
+    width: 90vw;
+    height: 20vh;
+  }
+  .ex-share{
+    margin-top: -2rem;
+  }
+
+  .line{
+    margin-top: -0.9rem;
+  }
+
+  .check_boxes{
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width: 751px) {
+  .title-field{
+    width: 50vw;
+  }
+  .details-field{
+    width: 50vw;
+  }
+  .answer-field{
+    width: 50vw;
+    height: 30vh;
+  }
+  .twitter{
+    margin-top: 1.5rem;
+  }
+  .line{
+    margin-top: 0.6rem;
+  }
+  .check_boxes{
+    width: 50vw;
   }
 }
 
@@ -117,7 +166,7 @@ footer .btn:hover{
 }
 
 .title-field{
-  width: 40vw;
+  /*width: 40vw;*/
   border: none;
   border-bottom: 1px solid #1b2538;
 }
@@ -127,7 +176,7 @@ footer .btn:hover{
 }
 
 .details-field{
-  width: 40vw;
+  /*width: 40vw;*/
   height: 30vh;
   margin-top: 5vh;
 }
@@ -137,17 +186,14 @@ footer .btn:hover{
   margin-bottom: 1vh;
 }
 
-.answer-field{
-  width: 50vw;
-  height: 30vh;
-}
-
 .answer-btn{
   margin-bottom: 1rem;
 }
 
 .check_boxes{
-  width: 40vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
 }
 
 #q-show{
@@ -216,12 +262,15 @@ input::-webkit-input-placeholder{
 #like_button{
   border: 1px solid #aaa;
   border-radius: 3px;
+  background-color: #fff;
+  margin-top: 1.5rem;
 }
 
 #like_button_already{
   border: 1px solid #aaa;
   border-radius: 3px;
   background-color: #aaa;
+  margin-top: 1.5rem;
 }
 
 .likes_count{
@@ -234,13 +283,20 @@ input::-webkit-input-placeholder{
   border: 1px solid #007BFF;
   border-radius: 3px;
   padding: 3px;
+  /*margin-top: 1.5rem;*/
 }
 
 .line{
   color: #00B901;
   font-size: 2.5rem;
+  /*margin-top: 0.6rem;*/
+  margin-left:0.5rem;
 }
 
 .slack{
   color: #999;
+}
+
+.sort{
+  font-size: 0.8rem;
 }
