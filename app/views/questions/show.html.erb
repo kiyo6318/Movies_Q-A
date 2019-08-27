@@ -26,7 +26,7 @@
     </div>
     <div class="row">
       <div class="offset-2">
-        <% if current_user.present? %>
+        <% if logged_in? %>
           <% unless current_user.already_liked?(@question) %>
             <%= button_to question_likes_path(@question),id: "like_button" do %>
               <%= icon("far","thumbs-up") %> いいね <%= @question.likes.count %>
