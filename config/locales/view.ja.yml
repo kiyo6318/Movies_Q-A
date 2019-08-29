@@ -5,6 +5,8 @@ ja:
     login: ログイン
     post: 投稿する
     update: 更新する
+    follow: ＋フォロー
+    following: ✔︎フォロー中
     first: "&laquo; 最初へ"
     last: "最後へ &raquo;"
     next: "次へ &rsaquo;"

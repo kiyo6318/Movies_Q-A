@@ -234,6 +234,10 @@ input::-webkit-input-placeholder{
   margin-top: 1vh;
 }
 
+.user-edit{
+  margin-top: 1vh;
+}
+
 .user-delete{
   margin-top: 1vh;
 }
@@ -299,4 +303,34 @@ input::-webkit-input-placeholder{
 
 .sort{
   font-size: 0.8rem;
+}
+
+.follow{
+  border-radius: 3px;
+  font-size: 0.8rem;
+  background-color: #eee;
+}
+
+.follow:hover{
+  background-color: #aaa;
+}
+
+.following{
+  border-radius: 3px;
+  font-size: 0.8rem;
+  background-color: #ddd;
+}
+
+.following:hover{
+  background-color: #aaa;
+}
+
+.relations-link{
+  font-size: 0.8rem;
+  color: #111;
+  text-decoration: underline;
+}
+
+.relations-link:hover{
+  color: #111;
 }

@@ -43,6 +43,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def relations
+    @user = User.includes(:following,:followers).find(params[:id])
+  end
+
   private
 
   def user_params
