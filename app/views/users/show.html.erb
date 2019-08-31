@@ -11,8 +11,20 @@
   <div class="best_answer">
     ベストアンサー <%= @user.best_answers_count %>
   </div>
-  <% if @user == current_user %>
+  <% if @user != current_user %>
     <div>
+      <%= render "follow_form",user: @user %>
+    </div>
+  <% end %>
+  <div>
+    フォロー <%= @user.following.count %>
+    フォロワー <%= @user.followers.count %>
+  </div>
+  <div>
+    <%= link_to "フォロー・フォロワー一覧",relations_user_path(@user),class: "relations-link" %>
+  </div>
+  <% if @user == current_user %>
+    <div class="user-edit">
       <%= link_to "アカウント情報編集",edit_user_path(@user), class: "btn btn-info btn-sm" %>
     </div>
   <% end %>
@@ -22,14 +34,14 @@
       <tr>
         <td>
           <% if question.status_i18n == "未解決" %>
-          <span class="unsolved"><%= question.status_i18n %></span>
+            <span class="unsolved"><%= question.status_i18n %></span>
           <% elsif question.status_i18n == "解決済" %>
-          <span class="resolved"><%= question.status_i18n %></span>
+            <span class="resolved"><%= question.status_i18n %></span>
           <% end %>
           <%= link_to question.title,question_path(question) %>
           <br>
           <% question.labels.each do |label| %>
-          <span class="genre"><%= label.genre %></span>
+            <span class="genre"><%= label.genre %></span>
           <% end %>
         </td>
       </tr>
