@@ -1,5 +1,5 @@
+<% breadcrumb :users %>
 <div class="container">
-  <h1>ユーザー一覧</h1>
   <%= sort_link(@q,:best_answers_count,"ベストアンサーランキング",default_order: :desc) %>
   <% @users.each do |user| %>
     <div class="table-responsive">
