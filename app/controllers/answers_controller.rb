@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   before_action :set_question
   before_action :set_answer,only: %i(update destroy)
+  before_action :authenticate_user
 
   def create
     @answer = @question.answers.build(answer_params)
