@@ -27,6 +27,7 @@ gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'font-awesome-sass'
 gem 'gretel'
+gem 'redis'
 
 group :development, :test do
   gem 'capistrano', '3.6.0' # capistranoのツール一式
