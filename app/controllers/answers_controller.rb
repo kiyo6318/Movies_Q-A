@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     @answer.answerer_id = current_user.id if current_user
     respond_to do |format|
       if @answer.save
+        AnswerMailer.answer_mail(@question).deliver
         format.js { render :index }
       else
         format.js { render :form }
