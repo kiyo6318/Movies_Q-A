@@ -91,6 +91,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  ENV["REDIS"] = "dev-redis.cea8w8.0001.apne1.cache.amazonaws.com:6379"
 end
