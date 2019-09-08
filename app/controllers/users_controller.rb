@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      SignupMailer.signup_mail(@user).deliver
       redirect_to user_path(@user.id),notice:"ユーザー登録完了しました!"
     else
       render "new"
