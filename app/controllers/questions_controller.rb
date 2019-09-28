@@ -50,7 +50,7 @@ class QuestionsController < ApplicationController
 
   def set_ranking_data
     ids = REDIS.zrevrangebyscore "questions/daily/#{Date.today.to_s}","+inf",0,limit:[0,5]
-    @ranking_questions = ids.map{ |id| Question.find(id) }
+    @ranking_questions = ids.map{ |id| Question.find_by(id: id) }
 
     if @ranking_questions.count < 5
       adding_questions = Question.order(created_at: :DESC,updated_at: :DESC).where.not(id:ids).limit(5 - @ranking_questions.count)
