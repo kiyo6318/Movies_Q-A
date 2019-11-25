@@ -28,6 +28,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'font-awesome-sass'
 gem 'gretel'
 gem 'redis'
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   gem 'capistrano', '3.6.0' # capistranoのツール一式
